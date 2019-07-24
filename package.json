@@ -19,7 +19,11 @@
   "homepage": "https://github.com/Zebadiahmiller/LIRI-Bot#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "bandsintown": "^1.0.1",
+    "bandsintown-events": "^1.0.4",
     "dotenv": "^8.0.0",
-    "node-spotify-api": "^1.1.1"
+    "node-spotify-api": "^1.1.1",
+    "omdb": "^0.8.0",
+    "xhr2": "^0.2.0"
   }
 }
