@@ -3,6 +3,7 @@ const Spotify = require('node-spotify-api');
 const keys = require("./keys.js");
 const spotify = new Spotify(keys.spotify);
 const axios = require("axios");
+var moment = require('moment');
 let nodeArg = process.argv;
 
 //////// Spotify call/////
@@ -33,28 +34,36 @@ spotify
   });
 }
 //////////bands in town/////////
+if (process.argv[2] === "concert-this"){
+    let artist="";
 
-// var BandsInTownEvents = require("bandsintown-events")
-// var Events = new BandsInTownEvents();
+for (let i =3; i < nodeArg.length; i++){
+    if (i > 2 && nodeArg.length && process.argv[2] === "concert-this"){
+        artist = artist + nodeArg[i]
+    }
+   }
+   if (process.argv[2]==="concert-this" && process.argv[3]==null){
+       artist ="Nelly"
+   }
 
-// //set options for instance
-// //app_id and artists are required
-// Events.setParams({
-//   "app_id":"myappname", //can be anything
-//   "artists":[ //accepts string for single artist or an array of artist names
-//     "Wilco",
-//     "Yeah Yeah Yeahs"
-//   ]
-// });
 
-// //get your events with success and error callbacks
-// Events.getEvents(function( events ){
-//   for(var i = 0; i < events.length; i++){
-//     console.log( events[i].venue.city + ", " + events[i].venue.region );
-//   }
-// },function( errors ){
-//   console.log(errors);
-// });
+
+const queryBands = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+
+
+axios.get(queryBands).then(
+    function(response) {
+
+        for( let i =0; i<response.data.length; i++) {
+        console.log("Venue: " + response.data[i].venue.name);
+        console.log("City: " + response.data[i].venue.city);
+        console.log("State " + response.data[i].venue.region);
+        console.log("Date " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
+        };
+        });
+
+};
+
 ///////////////////////OMDB API///////////////////////////
 if (process.argv[2]==="movie-this"){
 const omdb = require('omdb');
