@@ -24,10 +24,15 @@ console.log(spotifyQuery)
 spotify
   .search({ type: 'track', query: spotifyQuery })
   .then(function(response) {
-    console.log(response.tracks.items[0].artists[0].name);
-    console.log(response.tracks.items[0].name);
-    console.log(response.tracks.items[0].preview_url);
-    console.log(response.tracks.items[1].album.name);
+    console.log("Artist: " + response.tracks.items[0].artists[0].name);
+    console.log("Song: " + response.tracks.items[0].name);
+    if(response.tracks.items[0].preview_url === null){
+        console.log("No preview available for this song")
+    }
+    else{
+    console.log("Preview: " + response.tracks.items[0].preview_url);
+    }
+    console.log("Album: " + response.tracks.items[1].album.name);
   })
   .catch(function(err) {
     console.log(err);
