@@ -58,6 +58,10 @@ const queryBands = "https://rest.bandsintown.com/artists/" + artist + "/events?a
 
 axios.get(queryBands).then(
     function(response) {
+        if (response.data[0] == undefined){
+            console.log("No current concert plans!")
+        }
+        else{
 
         for( let i =0; i<response.data.length; i++) {
         console.log("Venue: " + response.data[i].venue.name);
@@ -65,6 +69,7 @@ axios.get(queryBands).then(
         console.log("State " + response.data[i].venue.region);
         console.log("Date " + moment(response.data[i].datetime).format("MM/DD/YYYY"));
         };
+    }
         });
 
 };

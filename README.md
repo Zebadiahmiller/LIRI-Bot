@@ -1,6 +1,7 @@
 # LIRI-Bot
 
-
+Welcome to LIRI-Bot!
+With this program you are able to find info to movies, songs, and concert location of any band!
 ## Concerts
 -------
 
