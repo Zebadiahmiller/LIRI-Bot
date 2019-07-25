@@ -16,7 +16,7 @@ for (let i =3; i < nodeArg.length; i++){
     }
    }
    if (process.argv[2]==="spotify-this-song" && process.argv[3]==null){
-       spotifyQuery ="The Sign"
+       spotifyQuery ="Lazy Eye"
    }
 console.log(spotifyQuery)
 
