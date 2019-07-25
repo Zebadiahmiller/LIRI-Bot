@@ -59,7 +59,7 @@ const queryBands = "https://rest.bandsintown.com/artists/" + artist + "/events?a
 axios.get(queryBands).then(
     function(response) {
         if (response.data[0] == undefined){
-            console.log("No current concert plans!")
+            console.log("No concerts in the foreseeable future!")
         }
         else{
 
