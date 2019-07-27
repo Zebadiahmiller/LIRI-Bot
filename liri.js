@@ -48,7 +48,7 @@ for (let i =3; i < nodeArg.length; i++){
     }
    }
    if (process.argv[2]==="concert-this" && process.argv[3]==null){
-       artist ="Nelly"
+       artist ="Tokyo Police Club"
    }
 
 
@@ -101,7 +101,11 @@ axios.get(queryUrl).then(
         console.log("Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
       console.log("Imdb: " + response.data.imdbRating);
-      console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);
+      if (response.data.Ratings[1] === undefined)
+      {console.log("No rotten tomatoes rating for this film")}
+      else{
+      console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);}
+
       console.log("Production Country: " + response.data.Country);
       console.log("Language: " + response.data.Language);
       console.log("Plot: " + response.data.Plot);
